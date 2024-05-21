@@ -1,0 +1,63 @@
+.contenido{
+    /* background-image: url("https://img.freepik.com/foto-gratis/fondo-papel-tapiz-colorido-borroso-vivo_58702-2710.jpg?t=st=1714059049~exp=1714062649~hmac=4c0f39023d24ea28803ece05dc7498de9b0158eb8208de67c242c03399dca26a&w=1380"); */
+    width: 100%;
+    margin: auto;
+    position: relative;
+    background: url(https://media.es.wired.com/photos/6442f341a566376ee967ba24/1:1/w_1414,h_1414,c_limit/GettyImages-1424828162.jpg) no-repeat center;
+    background-size: 100% 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Agregado: Color de fondo con transparencia */
+    height: 85vh;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+.perfil{
+    top: 28%;
+    left: 17%;
+    position: absolute;
+
+}
+
+.perfil2{
+    top: 28%;
+    left: 60%;
+    position: absolute;
+    width: 350px;
+}
+
+/* .navbar{
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+.item {
+    margin-bottom: 5px; /* Espacio entre cada ítem */
+}
+.item::before {
+    content: "• "; /* Agrega un punto al principio de cada ítem */
+}
+
+.textotitulo{
+    color: rgb(255, 255, 255);
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 100px;
+    /* animation: animateText 2s linear infinite alternate; */
+  }
+
+
+
+.imgPerfil{
+    height: 350px;
+    border-color: black;
+    border-radius: 5%;
+    border-style: double;
+}
+
+.titulos{
+    color: black;
+}
+

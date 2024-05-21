@@ -1,0 +1,25 @@
+<div class="login-wrap">
+	<div class="login-html">
+    <h2 class="titulo">Iniciar Sesion</h2>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<div class="group">
+					<label for="user" class="label">Email</label>
+					<!-- <input id="user" type="text" class="input" placeholder="example@correo.com"> -->
+          <input [(ngModel)]="userMail" name = "userMail" type="text" class ="input" placeholder="example@correo.com">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+          <input [(ngModel)]="userPass" name = "userPass" type="password" class ="input" placeholder="**********">>
+				</div>
+				<div class="group">
+					<!-- <input type="submit" class="button" (click)="Login"> -->
+          <button type = "submit" class="button" (click) = "Login()">Iniciar</button>
+          <button type = "submit" class="button" (click) = "Rellenar()">Autocompletar Datos</button>
+				</div>
+				<div class="hr"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
