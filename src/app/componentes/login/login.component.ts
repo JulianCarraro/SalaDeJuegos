@@ -5,7 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import {Auth, signInWithEmailAndPassword} from '@angular/fire/auth';
-import { UserService } from '../../services/user.service';
+import { UserAuth } from '../../services/user-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,8 +20,7 @@ export class LoginComponent {
   public loginsCollection:any[] = [];
   public userMail:string = "";
   public userPass:string = "";
-
-  public loggedUser:string = "";
+  public mensajeError:string = "";
 
 
   //public miObservable:BehaviorSubject<string> = new BehaviorSubject<string>("");
@@ -30,27 +29,25 @@ export class LoginComponent {
       private firestore: Firestore, 
       private router: Router,
       private auth: Auth,
-      private userService: UserService
+      private userAuthService: UserAuth
     ){}
 
-  Login() {
-      this.userService.login(this.userMail, this.userPass)
-      .then((res) => {
-      if (res.user.email !== null) this.loggedUser = res.user.email;
-      let col = collection(this.firestore, 'logins');
-      addDoc(col, { fecha: new Date(), "email": this.userMail})
-
-      if(typeof localStorage !== "undefined")
-      {
-        localStorage.setItem('email', JSON.stringify(this.userMail));
-      }
-
-      this.router.navigate(["/home"]);
-      })
-      .catch((e) => {
-        console.error("Error al iniciar sesión:", e);
+    Login(): void {
+      this.userAuthService.logIn(this.userMail, this.userPass).subscribe({
+        next: () => {
+          // Inicio de sesión exitoso
+          console.log("Inicio de sesión exitoso");
+          this.router.navigate(["/home"]);
+          let col = collection(this.firestore, 'logins');
+          addDoc(col, { fecha: new Date(), "email": this.userMail})
+        },
+        error: () => {
+          console.log("ERROR");
+          // console.error("Error al iniciar sesión:", error);
+          this.mensajeError = "Los datos son incorrectos";
+        }
       });
-  }
+    }
 
   Rellenar(){
     this.userMail = "MailPrueba@gmail.com";

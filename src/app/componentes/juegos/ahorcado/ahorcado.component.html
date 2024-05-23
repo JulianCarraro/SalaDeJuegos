@@ -1,1 +1,48 @@
-<p>ahorcado works!</p>
+<div class = "contenido">
+    <h1 class = "titulo">Ahorcado</h1>
+    <div class = "juego">
+        <div class = "soga">
+            <img src = '../../../../assets/JuegoAhorcado{{this.vidas}}.png' style = "height: 600px; width: 600px;">
+        </div>
+
+        <h2>Vidas: {{this.vidas}}</h2>
+
+        <div class="letras">
+            @if(!this.jugadorGano && !jugadorPerdio) {
+            <div class="containerLetras">
+              <div class="text-center">
+                <button (click)="eligeLetra(letra)" *ngFor="let letra of letras; let i = index" class="btn" [disabled]="!letrasHabilitadas[i]"> {{ letra.toLowerCase() }}
+                </button>
+              </div>
+            </div>
+            }
+        </div>
+
+        <div class = "palabraJugador">
+            <h2> {{this.palabraJugador}} </h2>
+        </div>
+
+        <ng-template #botones>
+            <div class="botones">
+                <button (click)="reiniciarJuego()">Reiniciar</button>
+                <button (click)="volverAlHome()">Menu</button>
+            </div>
+        </ng-template>
+
+        @if(this.jugadorGano) {
+        <div class="jugadorGano">
+            <h1 class="gano">GANASTE</h1>
+            <ng-container *ngTemplateOutlet="botones"></ng-container>
+        </div>
+        }
+
+        @if(this.jugadorPerdio) {
+            <div class="jugadorPerdio">
+                <h1 class="perdio">Perdiste</h1>
+                <ng-container *ngTemplateOutlet="botones"></ng-container>
+            </div>
+        }
+    </div>
+    
+    
+</div>

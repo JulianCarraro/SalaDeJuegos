@@ -1,0 +1,20 @@
+.contenido{
+    margin: auto;
+    background: url('../../../../assets/Preguntados.png') no-repeat center;
+    background-size: 100% 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Agregado: Color de fondo con transparencia */
+    box-shadow: 0 12px 15px 0 rgba(0,0,0,.24), 0 17px 50px 0 rgba(0,0,0,.19);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.contenido::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, #000 0%, transparent);
+}

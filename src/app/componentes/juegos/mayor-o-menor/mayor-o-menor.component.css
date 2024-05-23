@@ -1,0 +1,186 @@
+.contenido{
+    margin: auto;
+    background: url('../../../../assets/FondoMayorOMenor.jpg') no-repeat center;
+    background-size: 100% 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Agregado: Color de fondo con transparencia */
+    box-shadow: 0 12px 15px 0 rgba(0,0,0,.24), 0 17px 50px 0 rgba(0,0,0,.19);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    justify-content: center; /* Agregado: Centra horizontalmente */
+    align-items: center; /* Agregado: Centra verticalmente */
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, #000 0%, transparent);
+}
+
+.contenido .titulo{
+    font-style: italic;
+    font-size: 100px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 5%;
+    z-index: 1;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+         
+}
+
+
+.juego{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.cartas{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 50px; /* Añadir espacio entre las cartas y los botones */
+    z-index: 1;
+}
+
+.cartas img{
+    display: block;
+    margin: 0 auto;
+}
+
+.botones{
+    display: flex;
+    gap: 20px;
+    z-index: 1;
+}
+
+.botones button{
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: rgb(189, 101, 0);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 120px;
+}
+
+.jugadorGano{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    z-index: 4;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.gano{
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.jugadorPerdio{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(85, 0, 0);
+    z-index: 4;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.perdio{
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.botones2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.botones2 button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 120px;
+}
+
+.resultados {
+    display: flex;
+    justify-content: space-around; /* Ajusta el espacio entre los elementos hijos */
+    align-items: center; /* Centra verticalmente los elementos hijos */
+    font-style: italic;
+    font-size: 100px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 80%;
+    z-index: 2;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+.resultados h2 {
+    margin: 10px; /* Elimina el margen predeterminado */
+}
+
+.respuesta {
+    display: flex;
+    justify-content: space-around; /* Ajusta el espacio entre los elementos hijos */
+    align-items: center; /* Centra verticalmente los elementos hijos */
+    font-style: italic;
+    font-size: 100px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 75%;
+    z-index: 2;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+.respuesta h2 {
+    margin: 10px; /* Elimina el margen predeterminado */
+}

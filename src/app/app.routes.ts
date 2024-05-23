@@ -6,6 +6,8 @@ import { PageNotFoundComponent } from './componentes/page-not-found/page-not-fou
 import { QuiensoyComponent } from './componentes/quiensoy/quiensoy.component';
 import { RegisterComponent } from './componentes/register/register.component';
 import { AhorcadoComponent } from './componentes/juegos/ahorcado/ahorcado.component';
+import { PreguntadosComponent } from './componentes/juegos/preguntados/preguntados.component';
+import { MayorOMenorComponent } from './componentes/juegos/mayor-o-menor/mayor-o-menor.component';
 
 
 export const routes: Routes = [
@@ -16,6 +18,9 @@ export const routes: Routes = [
     { path: 'quiensoy', component: QuiensoyComponent},
     { path: 'register', component: RegisterComponent},
     { path: 'ahorcado', component: AhorcadoComponent},
+    { path: 'preguntados', component: PreguntadosComponent},
+    { path: 'mayoromenor', component: MayorOMenorComponent},
+
     // La ruta comodin debe ir siempre al final
     { path: '**', component: PageNotFoundComponent },
     

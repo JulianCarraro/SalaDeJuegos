@@ -12,12 +12,12 @@
               <a class="nav-link active text-white" routerLink="home" routerLinkActive="active-route">Home</a>      
               <a class="nav-link active text-white" routerLink="quiensoy" routerLinkActive="active-route">Quien Soy</a>
 
-              <ng-container *ngIf = "isLoggedIn; else mostrarLogin" >
-                <span class="nav-link active text-white">{{userMail}}</span> 
+              <ng-container *ngIf = "auxObservable$ | async as user; else mostrarLogin" >
+                <span class="nav-link active text-white">{{user.email}}</span> 
                 <button class="nav-link active text-white" (click)="logOut()"> Cerrar Sesion</button>
               </ng-container>
               
-              <<ng-template #mostrarLogin>
+              <ng-template #mostrarLogin>
                 <a class="nav-link active text-white" routerLink="register" routerLinkActive="active-route">Registrarme</a>
                 <a class="nav-link active text-white" routerLink="login" routerLinkActive="active-route">Iniciar Sesion</a>
               </ng-template>

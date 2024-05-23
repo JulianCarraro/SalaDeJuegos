@@ -2,13 +2,15 @@
     height: 100%;
     position: fixed;
     width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .carousel img {
     height: 100%;
     width: 100%;
     object-fit: cover;
-   
 }
 
 .carousel::after{
@@ -29,8 +31,10 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     z-index: 1;
   }
 
@@ -39,12 +43,57 @@
     font-size: 100px;
     font-weight: bold;
     color: white;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 
 .lista-de-items .item .content p{
     font-weight: bold;
     color: white;
     font-style: italic;
+}
+
+
+button{
+    border-radius: 8px;
+    color: white;
+    background: #000;
+    cursor: pointer;
+    padding: 16px 32px;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    width: 300px;
+}
+
+button:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, red, blue, deeppink, blue, red, blue, deeppink, blue);
+    background-size: 800%;
+    border-radius: 12px;
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
 }
 
 .juegos {

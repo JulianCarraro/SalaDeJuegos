@@ -1,0 +1,53 @@
+<div class = "contenido">
+    <h1 class = "titulo">Mayor o Menor</h1>
+    <div class = "juego">
+        <div class = "cartas">
+            <img src = '{{this.cartaActual?.url}}' style = "height: 400px; width: 240px;">
+            <img src = '../../../../assets/cartas/tapa.png' style = "height: 400px; width: 240px;">
+        </div>
+
+        <div class = "botones">
+            <button (click)="Mayor()">MAYOR</button>
+            <button (click)="Igual()">IGUAL</button>
+            <button (click)="Menor()">MENOR</button>
+        </div>
+
+        <div class = "resultados">
+
+            <h2>PUNTOS: {{this.puntos}}</h2>
+            <h2>VIDAS: {{this.vidas}}</h2>
+        </div>
+
+        <div class="respuesta">
+            <h2 *ngIf="respuesta === 'Incorrecto'" style="color: #f31409">
+                Resultado: {{ respuesta }}
+            </h2>
+            <h2 *ngIf="respuesta === 'Correcto'" style="color: rgb(3, 187, 3)">
+                Resultado: {{ respuesta }}
+            </h2>
+        </div>
+
+
+        <ng-template #botones>
+            <div class="botones2">
+                <button (click)="reiniciarJuego()">Reiniciar</button>
+                <button (click)="volverAlHome()">Menu</button>
+            </div>
+        </ng-template>
+
+        @if(this.jugadorGano) {
+        <div class="jugadorGano">
+            <h1 class="gano">GANASTE</h1>
+            <ng-container *ngTemplateOutlet="botones"></ng-container>
+        </div>
+        }
+
+        @if(this.jugadorPerdio) {
+            <div class="jugadorPerdio">
+                <h1 class="perdio">Perdiste</h1>
+                <ng-container *ngTemplateOutlet="botones"></ng-container>
+            </div>
+        }
+    </div> 
+    
+</div>

@@ -4,23 +4,32 @@
     <!-- list Items -->
     <div class="lista-de-items">
       <div class="item">
-        <img [src]="getCurrentSlideUrl()" />
+        <img [src]="getItemUrl()" />
         <div class="content">
-          <h1>{{ getCurrentSlideTitle() }}</h1>
-          <p>
-            {{ getCurrentSlideDes() }}
-          </p>
-          <a></a>
+          <h1>{{ getItemTitle() }}</h1>
+          <p> {{ getItemDes() }}</p>
+          <ng-container *ngIf = "auxObservable$ | async as user; else mostrarTexto" >
+            <button (click) = "Jugar()">Jugar</button>
+          </ng-container>
+          
+          <ng-template #mostrarTexto>
+            <h2>
+              Debe Iniciar Sesion para poder jugar
+            </h2>
+          </ng-template>
 
+          <!-- <button (click) = "Jugar()">Jugar</button> -->
         </div>
       </div>
     </div>
+
+    
 
 
     <div class="juegos">
       
       @for (item of carrouselItems; track item.url;) {
-      <div class="item active" (click)="goToSlide(item.id)">
+      <div class="item active" (click)="selectItem(item.id)">
         <img src="{{ item.url }}" />
         <div class="content">{{ item.titulo }}</div>
       </div>

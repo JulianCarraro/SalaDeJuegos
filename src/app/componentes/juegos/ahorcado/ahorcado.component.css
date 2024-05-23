@@ -1,0 +1,171 @@
+.contenido{
+    margin: auto;
+    background: url('../../../../assets/Ahorcado.jpg') no-repeat center;
+    background-size: 100% 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Agregado: Color de fondo con transparencia */
+    box-shadow: 0 12px 15px 0 rgba(0,0,0,.24), 0 17px 50px 0 rgba(0,0,0,.19);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    justify-content: center; /* Agregado: Centra horizontalmente */
+    align-items: center; /* Agregado: Centra verticalmente */
+}
+
+.contenido::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, #000 0%, transparent);
+}
+
+.contenido .titulo{
+    font-style: italic;
+    font-size: 100px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    left: 38%;
+    top: 5%;
+    z-index: 1;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+         
+}
+
+.contenido h2{
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    left: 42%;
+    top: 74%;
+    z-index: 2;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.soga{
+    top: 25%;
+    left: 50%;
+    position: absolute;
+    z-index: 1;
+}
+
+.soga img{
+    width: 450px;
+    height: 450px;
+    display: block;
+    margin: 0 auto;
+}
+
+button{
+    background-color: rgb(104, 104, 255);
+    border: none;
+    display: inline-block;
+    padding: .5rem 1rem;
+    margin: .3rem;
+    font-size: 1.3rem;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: .5rem;
+}
+
+.containerLetras{
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 450px;
+    position: absolute;
+    left: 16%;
+    top: 55%;
+    z-index: 2;
+}
+
+.palabraJugador {
+    position: relative;
+    height: 100vh;
+}
+
+.palabraJugador h2 {
+    position: absolute;
+    top: 50%;
+    left: 28%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.jugadorGano{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    z-index: 4;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.gano{
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.botones button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 120px;
+}
+
+.jugadorPerdio{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(85, 0, 0);
+    z-index: 4;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.perdio{
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+
+

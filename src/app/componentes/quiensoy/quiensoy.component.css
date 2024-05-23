@@ -6,10 +6,12 @@
     background: url(https://media.es.wired.com/photos/6442f341a566376ee967ba24/1:1/w_1414,h_1414,c_limit/GettyImages-1424828162.jpg) no-repeat center;
     background-size: 100% 100%;
     background-color: rgba(255, 255, 255, 0.5); /* Agregado: Color de fondo con transparencia */
-    height: 85vh;
+    height: 100vh;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    justify-content: center; /* Agregado: Centra horizontalmente */
+    align-items: center; /* Agregado: Centra verticalmente */
 }
 
 
@@ -22,7 +24,7 @@
 
 .perfil2{
     top: 28%;
-    left: 60%;
+    left: 62%;
     position: absolute;
     width: 350px;
 }
@@ -59,5 +61,16 @@
 
 .titulos{
     color: black;
+    font-weight: bold;
+}
+
+.titulos p{
+    color: black;
+    font-weight: bold;
+}
+
+.textos{
+    background-color: grey;
+    border-radius: 8%;
 }
 

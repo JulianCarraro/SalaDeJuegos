@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { UserAuth } from '../../services/user-auth.service';
+import { Observable } from 'rxjs';
+import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +15,16 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class HomeComponent{
 
-  constructor(private router: Router){}
+  auxObservable$! : Observable<User | null>; //creo un observable que puede ser un usuario o null
+  user$! : User | null; //Voy a guardar la respuesta del observable
+
+  constructor(private router: Router, public userAuthService: UserAuth){
+    this.auxObservable$ = this.userAuthService.getUser();
+    this.auxObservable$.subscribe((r)=> 
+    {
+      this.user$ = r;
+    })
+  }
 
   carrouselItems =
   [
@@ -24,13 +36,13 @@ export class HomeComponent{
     },
     {
       id: 1,
-      url: '../../../assets/Preguntados.png',
+      url: '../../../assets/Ahorcado.jpg',
       titulo: "Ahorcado",
       descripcion: "123", 
     },
     {
       id: 2,
-      url: '../../../assets/Preguntados.png',
+      url: '../../../assets/FondoMayorOMenor.jpg',
       titulo: "MayorOMenor",
       descripcion: "456", 
     },
@@ -45,36 +57,38 @@ export class HomeComponent{
 
   activeItemsIndex: number = 0;
 
-  ngOnInit(): void {
-
-  }
-
-  goToSlide(slideIndex: number): void {
+  selectItem(slideIndex: number): void {
     this.activeItemsIndex = slideIndex;
     console.log(slideIndex);
   }
 
-  getCurrentSlideUrl() {
+  getItemUrl() {
     return `${this.carrouselItems[this.activeItemsIndex].url}`;
   }
 
-  getCurrentSlideTitle() {
+  getItemTitle() {
     return `${this.carrouselItems[this.activeItemsIndex].titulo}`;
   }
 
-  getCurrentSlideDes() {
+  getItemDes() {
     return `${this.carrouselItems[this.activeItemsIndex].descripcion}`;
   }
 
-  jugarAhora() {
-    if (this.activeItemsIndex == 0) {
-      this.router.navigateByUrl('/ahorcado');
-    } else if (this.activeItemsIndex == 1) {
-      this.router.navigateByUrl('/preguntados');
-    } else if (this.activeItemsIndex == 2) {
-      this.router.navigateByUrl('/mayormenor');
-    } else if (this.activeItemsIndex == 3) {
-      this.router.navigateByUrl('/mijuego');
+  Jugar() {
+    switch(this.activeItemsIndex)
+    {
+      case 0: 
+        this.router.navigateByUrl('/preguntados');
+        break;
+      case 1: 
+        this.router.navigateByUrl('/ahorcado');
+        break;
+      case 2: 
+        this.router.navigateByUrl('/mayoromenor');
+        break;
+      case 3: 
+        this.router.navigateByUrl('/mijuego');
+        break;
     }
   }
   

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet, RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
+import {RouterOutlet, RouterLink, RouterLinkActive, RouterModule, Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UserService } from './services/user.service';
-import { signOut } from 'firebase/auth';
-import { Auth } from '@angular/fire/auth';
+import { UserAuth } from './services/user-auth.service';
+import { Observable } from 'rxjs';
+import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-root',
@@ -15,30 +15,20 @@ import { Auth } from '@angular/fire/auth';
 })
 export class AppComponent {
   title = 'SalaDeJuegos';
-  isLoggedIn: boolean = false;
-  userMail : string | null = null;
 
+  auxObservable$! : Observable<User | null>; //creo un observable que puede ser un usuario o null
+  user! : User | null; //Voy a guardar la respuesta del observable
 
-  constructor(public userService: UserService) {}
-
-  ngOnInit(): void
+  constructor(public userAuthService: UserAuth, private router: Router) 
   {
-    this.UserLogged();
-    
-  }
-
-  UserLogged()
-  {
-      this.isLoggedIn = this.userService.isLoggedIn();
-      console.log(this.isLoggedIn);
-      this.userService.getUserMail().then(email=> {
-        this.userMail = email;
-    });
+    this.auxObservable$ = this.userAuthService.getUser();
+    this.auxObservable$.subscribe;
   }
 
   logOut() : void
   {
-    this.userService.logOut();
+    this.userAuthService.logOut();
+    this.router.navigate(["/home"]);
   }
 
 }
