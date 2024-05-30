@@ -1,0 +1,134 @@
+.contenido{
+    margin: auto;
+    background: url('../../../../assets/FondoMiJuego1.jpg') no-repeat center;
+    background-size: 100% 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Agregado: Color de fondo con transparencia */
+    box-shadow: 0 12px 15px 0 rgba(0,0,0,.24), 0 17px 50px 0 rgba(0,0,0,.19);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    justify-content: center; /* Agregado: Centra horizontalmente */
+    align-items: center; /* Agregado: Centra verticalmente */
+}
+
+.contenido::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, #000 0%, transparent);
+}
+
+.juego{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.espacioJuego{
+    position: relative;
+    top: -5%;
+    width: 500px; /* Asegúrate de que estas dimensiones coincidan con la imagen */
+    height: 700px; /* Asegúrate de que estas dimensiones coincidan con la imagen */
+    z-index: 1; /* Puedes ajustar el z-index según sea necesario */
+    overflow: visible;
+}
+
+
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 40px solid black;
+    position: absolute;
+    z-index: 3; /* Los pinches deben estar por encima de la imagen de fondo */
+    left: 0; /* Ajusta la posición según sea necesario */
+}
+
+.triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 40px solid black;
+    position: absolute;
+    z-index: 3; /* Los pinches deben estar por encima de la imagen de fondo */
+    left: 92%; /* Ajusta la posición según sea necesario */
+}
+
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 40px solid #000; /* Aquí puedes cambiar el color del triángulo */
+    position: absolute;
+    z-index: 3; /* Los pinches deben estar por encima de la imagen de fondo */
+    top: 0%; /* Ajusta la posición según sea necesario */
+  }
+
+  .triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid #000; /* Cambia a border-bottom para que el triángulo apunte hacia arriba */
+    position: absolute;
+    z-index: 3; /* Los pinches deben estar por encima de la imagen de fondo */
+    top: 94.5%
+  }
+
+  .bird {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: url('../../../../assets/Pajarito.png');
+    background-size: 60px 60px; /* La imagen sobresale del contenedor */
+    background-position: 50% 50%; /* Alineación de la imagen dentro del contenedor */
+    z-index: 4; /* Asegura que esté sobre otros elementos, ajustar según necesidad */
+    overflow: visible; /* Permite que la imagen sobresalga */
+    transition: transform 0.5s ease; /* para suavizar la transición de dirección */
+  }
+
+  .bird.reverse {
+    transform: scaleX(-1); /* Invierte la imagen horizontalmente */
+}
+
+
+button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 120px;
+    z-index: 3;
+}
+
+.puntos {
+    position: absolute;
+    top: 35%; /* Ajusta la posición desde la parte superior del área de juego */
+    left: 50%; /* Centrado respecto al área del juego */
+    transform: translateX(-50%); /* Ajuste fino para centrar exactamente */
+    color: white; /* Color del texto */
+    font-size: 24px; /* Tamaño del texto */
+    background: rgba(0, 0, 0, 0.2); /* Fondo semi-transparente */
+    border-radius: 50%; /* Hace que el fondo sea un círculo */
+    width: 120px; /* Define el ancho del círculo */
+    height: 120px; /* Define la altura del círculo */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido dentro del círculo */
+    align-items: center; /* Centra verticalmente el contenido dentro del círculo */
+    z-index: 10; /* Asegura que el puntaje esté por encima de otros elementos */
+}
+
+
+
+

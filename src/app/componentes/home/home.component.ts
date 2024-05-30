@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UserAuth } from '../../services/user-auth.service';
 import { Observable } from 'rxjs';
 import { User } from 'firebase/auth';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-home',
@@ -38,19 +39,19 @@ export class HomeComponent{
       id: 1,
       url: '../../../assets/Ahorcado.jpg',
       titulo: "Ahorcado",
-      descripcion: "123", 
+      descripcion: "El juego clásico de adivinanzas donde debes descubrir una palabra oculta, adivinando una letra a la vez. Cada letra incorrecta resulta en una parte del cuerpo del hombre colgado en la horca en el tablero. El objetivo es completar la palabra antes de que el dibujo del ahorcado esté completo.", 
     },
     {
       id: 2,
       url: '../../../assets/FondoMayorOMenor.jpg',
-      titulo: "MayorOMenor",
-      descripcion: "456", 
+      titulo: "Mayor O Menor",
+      descripcion: "Un emocionante juego de cartas donde tu tarea es predecir si la siguiente carta será de mayor o menor valor que la actual. Es un juego rápido de riesgo y recompensa que requiere intuición y suerte. Acierta tantas veces seguidas como puedas para obtener el máximo puntaje.", 
     },
     {
       id: 3,
-      url: '../../../assets/Preguntados.png',
-      titulo: "MIJUEGO",
-      descripcion: "7879", 
+      url: '../../../assets/FondoMiJuego5.jpg',
+      titulo: "Evita las espinas",
+      descripcion: "Es un juego dinámico y desafiante donde debes maniobrar a través de un campo de obstáculos lleno de espinas mortales. El objetivo es mover tu personaje hábilmente para evitar tocar las espinas y avanzar lo más lejos posible. Cuanto más tiempo sobrevivas, mayor será tu puntuación.", 
     },
 
   ];
@@ -59,7 +60,6 @@ export class HomeComponent{
 
   selectItem(slideIndex: number): void {
     this.activeItemsIndex = slideIndex;
-    console.log(slideIndex);
   }
 
   getItemUrl() {
@@ -75,22 +75,41 @@ export class HomeComponent{
   }
 
   Jugar() {
-    switch(this.activeItemsIndex)
+    if(this.user$ as User)
     {
-      case 0: 
-        this.router.navigateByUrl('/preguntados');
-        break;
-      case 1: 
-        this.router.navigateByUrl('/ahorcado');
-        break;
-      case 2: 
-        this.router.navigateByUrl('/mayoromenor');
-        break;
-      case 3: 
-        this.router.navigateByUrl('/mijuego');
-        break;
+      switch(this.activeItemsIndex)
+      {
+        case 0: 
+          this.router.navigateByUrl('/preguntados');
+          break;
+        case 1: 
+          this.router.navigateByUrl('/ahorcado');
+          break;
+        case 2: 
+          this.router.navigateByUrl('/mayoromenor');
+          break;
+        case 3: 
+          this.router.navigateByUrl('/evitalasespinas');
+          break;
+      }
     }
+    else
+    {
+      this.mostrarAlerta();
+    }
+
+
   }
-  
+
+  mostrarAlerta()
+  {
+    Swal.fire({
+      icon: 'error',                    
+      title: 'Error de autenticación', 
+      text: 'Debes iniciar sesión para jugar', 
+      confirmButtonText: 'Cerrar',       
+      showConfirmButton: true,          
+    });
+  }
 
 }

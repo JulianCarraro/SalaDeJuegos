@@ -20,11 +20,7 @@ export class RegisterComponent {
   newUserPass: string = "";
   newUserRepeatPass: string = "";
 
-  
-  loggedUser: string = "";
-  flagError: boolean = false;
   msjError: string = "";
-  flagPass: boolean = true;
 
   constructor(
       public auth: Auth, 
@@ -37,7 +33,6 @@ export class RegisterComponent {
   {
     if(this.newUserPass == this.newUserRepeatPass)
     {      
-        this.flagError = true;
         this.userAuthService.register(this.newUserMail, this.newUserPass).then((res) => {
         let col = collection(this.firestore, 'users');
         addDoc(col, {fecha: new Date(), "email": this.newUserMail})
@@ -45,23 +40,29 @@ export class RegisterComponent {
         this.router.navigate(["/home"]);
   
       }).catch((e) => {
-        console.log(e.code);
         switch (e.code) {
           case "auth/invalid-email":
             this.msjError = "Email invalido";
+            console.log("HOlA");
             break;
           case "auth/email-already-in-use":
             this.msjError = "Email ya en uso";
             break;
+          case "auth/missing-password":
+            this.msjError = "Faltan completar campos";
+            break;
+          case "auth/weak-password":
+            this.msjError = "La contraseña es demasiado debil";
+          break;
           default:
-            this.msjError = e.code
+            this.msjError = "Ocurrio un error";
             break;
         }
       })
     }
     else
     {
-      this.flagPass = false;
+      this.msjError = "Las contraseñas no coinciden";
     }
   }
 

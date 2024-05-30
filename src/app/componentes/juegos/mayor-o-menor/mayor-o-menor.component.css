@@ -77,69 +77,6 @@
     width: 120px;
 }
 
-.jugadorGano{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: green;
-    z-index: 4;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.gano{
-    font-size: 50px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 
-    -1px -1px 0 #000,  
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
-}
-
-.jugadorPerdio{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgb(85, 0, 0);
-    z-index: 4;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.perdio{
-    font-size: 50px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 
-    -1px -1px 0 #000,  
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
-}
-
-.botones2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.botones2 button {
-    padding: 10px 20px;
-    font-size: 20px;
-    background-color: red;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    width: 120px;
-}
 
 .resultados {
     display: flex;

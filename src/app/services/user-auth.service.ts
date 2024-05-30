@@ -22,10 +22,8 @@ export class UserAuth{
         return createUserWithEmailAndPassword(this.auth, email, password);
     }
 
-    public logIn(email : string, password: string) : Observable<void>{
-        const promise = signInWithEmailAndPassword(this.auth, email, password).then(()=>{
-        })
-        return from (promise);
+    public logIn(email : string, password: string){
+        return signInWithEmailAndPassword(this.auth, email, password);
     }
   
   

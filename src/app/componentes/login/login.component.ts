@@ -21,6 +21,7 @@ export class LoginComponent {
   public userMail:string = "";
   public userPass:string = "";
   public mensajeError:string = "";
+  public loggedUser:string = "";
 
 
   //public miObservable:BehaviorSubject<string> = new BehaviorSubject<string>("");
@@ -29,25 +30,33 @@ export class LoginComponent {
       private firestore: Firestore, 
       private router: Router,
       private auth: Auth,
-      private userAuthService: UserAuth
+      private userAuthService: UserAuth,
     ){}
 
-    Login(): void {
-      this.userAuthService.logIn(this.userMail, this.userPass).subscribe({
-        next: () => {
-          // Inicio de sesión exitoso
-          console.log("Inicio de sesión exitoso");
-          this.router.navigate(["/home"]);
-          let col = collection(this.firestore, 'logins');
-          addDoc(col, { fecha: new Date(), "email": this.userMail})
-        },
-        error: () => {
-          console.log("ERROR");
-          // console.error("Error al iniciar sesión:", error);
-          this.mensajeError = "Los datos son incorrectos";
-        }
-      });
-    }
+  async Login() : Promise<void>{
+      
+    this.userAuthService.logIn(this.userMail, this.userPass).then((res) => {
+        this.router.navigate(["/home"]);
+        let col = collection(this.firestore, 'logins');
+        addDoc(col, { fecha: new Date(), "email": this.userMail})
+      }).catch((e) => 
+      {
+        switch (e.code) {
+          case "auth/invalid-email":
+            this.mensajeError = "Email invalido";
+            break;
+          case "auth/invalid-credential":
+            this.mensajeError = "Los datos son incorrectos";
+            break;
+          case "auth/missing-password":
+            this.mensajeError = "Faltan completar campos";
+            break;
+          default:
+            this.mensajeError = e.code
+            break;
+        }  
+      }) 
+  }
 
   Rellenar(){
     this.userMail = "MailPrueba@gmail.com";

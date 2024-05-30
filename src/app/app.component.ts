@@ -5,19 +5,19 @@ import { CommonModule } from '@angular/common';
 import { UserAuth } from './services/user-auth.service';
 import { Observable } from 'rxjs';
 import { User } from 'firebase/auth';
+import { ChatComponent } from "./componentes/chat/chat.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, FormsModule, CommonModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [RouterOutlet, RouterLink, RouterLinkActive, FormsModule, CommonModule, ChatComponent]
 })
 export class AppComponent {
   title = 'SalaDeJuegos';
 
   auxObservable$! : Observable<User | null>; //creo un observable que puede ser un usuario o null
-  user! : User | null; //Voy a guardar la respuesta del observable
 
   constructor(public userAuthService: UserAuth, private router: Router) 
   {
@@ -30,5 +30,6 @@ export class AppComponent {
     this.userAuthService.logOut();
     this.router.navigate(["/home"]);
   }
+
 
 }

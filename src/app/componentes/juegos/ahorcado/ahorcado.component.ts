@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-ahorcado',
@@ -30,9 +31,8 @@ export class AhorcadoComponent {
   aciertos: number = 0;
   vidas:number = 6;
   palabraJugador : string = '';
-  jugadorGano: boolean = false;
-  jugadorPerdio: boolean = false;
   palabraAAdivinar: string = "";
+  score: number = 0;
   
   establecerPalabraAleatoria() : string {
     const i = Math.floor(Math.random() * this.palabras.length);
@@ -43,7 +43,6 @@ export class AhorcadoComponent {
   {
     this.palabraAAdivinar = this.establecerPalabraAleatoria().toLowerCase();
     this.palabraJugador = '_ '.repeat(this.palabraAAdivinar.length);
-    console.log(this.palabraAAdivinar);
   }
 
   eligeLetra(letra : string)
@@ -73,12 +72,51 @@ export class AhorcadoComponent {
   {
     if(this.aciertos == this.palabraAAdivinar.length)
     {
-      this.jugadorGano = true;
+      this.score++;
+    }
+
+    if(this.score == 7)
+    {
+      Swal.fire({
+        icon: 'success',
+        title: 'Ganaste',
+        showCancelButton: true,  // Habilita el botón de cancelar que usaremos para "Volver al Menú"
+        confirmButtonText: 'Reiniciar',
+        cancelButtonText: 'Volver al Menú',
+        reverseButtons: true,  // Coloca el botón de cancelar a la izquierda
+        backdrop: true,  // Esto asegura que el fondo sea opaco e interactuable solo con el SweetAlert
+        allowOutsideClick: false,  // Impide clics fuera del SweetAlert
+    }).then((r) => {
+        if (r.isConfirmed) {
+            // El usuario hizo clic en "Reiniciar", llama a la función ReiniciarJuego
+            this.reiniciarJuego();
+        } else if (r.dismiss === Swal.DismissReason.cancel) {
+            // El usuario hizo clic en "Volver al Menú", llama a la función VolverAlMenu
+            this.volverAlHome();
+        }
+    });
     }
 
     if(this.vidas == 0)
     {
-      this.jugadorPerdio = true;
+      Swal.fire({
+        icon: 'error',
+        title: 'Perdiste',
+        showCancelButton: true,  // Habilita el botón de cancelar que usaremos para "Volver al Menú"
+        confirmButtonText: 'Reiniciar',
+        cancelButtonText: 'Volver al Menú',
+        reverseButtons: true,  // Coloca el botón de cancelar a la izquierda
+        backdrop: true,  // Esto asegura que el fondo sea opaco e interactuable solo con el SweetAlert
+        allowOutsideClick: false,  // Impide clics fuera del SweetAlert
+        }).then((r) => {
+        if (r.isConfirmed) {
+            // El usuario hizo clic en "Reiniciar", llama a la función ReiniciarJuego
+            this.reiniciarJuego();
+        } else if (r.dismiss === Swal.DismissReason.cancel) {
+            // El usuario hizo clic en "Volver al Menú", llama a la función VolverAlMenu
+            this.volverAlHome();
+        }
+      });
     }
   }
 

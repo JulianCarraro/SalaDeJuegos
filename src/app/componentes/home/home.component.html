@@ -1,4 +1,4 @@
-<div class="contenido">
+<div class="contenido" style="user-select: none;">
  
   <div class="carousel">
     <!-- list Items -->
@@ -8,22 +8,20 @@
         <div class="content">
           <h1>{{ getItemTitle() }}</h1>
           <p> {{ getItemDes() }}</p>
-          <ng-container *ngIf = "auxObservable$ | async as user; else mostrarTexto" >
+          <!-- <ng-container *ngIf = "auxObservable$ | async as user; else mostrarTexto" > -->
             <button (click) = "Jugar()">Jugar</button>
-          </ng-container>
+          <!-- </ng-container>
           
           <ng-template #mostrarTexto>
             <h2>
               Debe Iniciar Sesion para poder jugar
             </h2>
-          </ng-template>
+          </ng-template> -->
 
           <!-- <button (click) = "Jugar()">Jugar</button> -->
         </div>
       </div>
     </div>
-
-    
 
 
     <div class="juegos">

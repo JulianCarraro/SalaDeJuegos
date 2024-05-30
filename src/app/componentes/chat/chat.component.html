@@ -1,0 +1,49 @@
+<ng-container *ngIf = "auxObservable$ | async as user">
+
+    <ng-container *ngIf = "isChatOpen; else mostrarTexto">
+
+    <div class="card text-center cardContainer">
+        <div class="header" (click)="toggleChat()">
+          CHAT
+        </div>
+
+        <div class="card-body">
+            <div data-bs-spy="scroll" id="contenedorMensajes" class="contenedorMensajes">
+                <p class = "msj"
+                *ngFor="let mensaje of mensajes"
+                [ngClass]=" user.email === mensaje.nombre ? 'enviado' : 'recibido'"
+                >
+                {{ mensaje.texto }}
+                <span> {{ mensaje.date }} </span>
+                </p>
+            </div>
+            </div>
+            <div class="card-footer text-body-secondary contenedorFooter">
+                <form [formGroup]="form" (ngSubmit)="enviarMensaje()">
+                    <div class="input-group mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Ingrese su mensaje"
+                        formControlName="mensaje"
+                    />
+                    <button class="input-group-text" id="basic-addon2">
+                        <img src="../../../assets/BotonEnviar.png" class="botonEnviar" />
+                    </button>
+                    </div>
+                </form>
+            </div>
+
+    
+      </div>
+    </ng-container>
+</ng-container>
+
+<ng-template #mostrarTexto>
+    <div class="card text-center cardContainer2">
+    <div class="header2" (click)="toggleChat()">
+        CHAT
+      </div>
+    </div>
+
+</ng-template>

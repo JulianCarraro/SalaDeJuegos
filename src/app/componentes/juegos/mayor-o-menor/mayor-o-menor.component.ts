@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 interface Carta{
   numero: number,
@@ -127,11 +128,46 @@ export class MayorOMenorComponent {
     if(this.vidas == 0)
     {
       this.jugadorPerdio = true;
+      Swal.fire({
+        icon: 'error',
+        title: 'Perdiste',
+        showCancelButton: true,  // Habilita el botón de cancelar que usaremos para "Volver al Menú"
+        confirmButtonText: 'Reiniciar',
+        cancelButtonText: 'Volver al Menú',
+        reverseButtons: true,  // Coloca el botón de cancelar a la izquierda
+        backdrop: true,  // Esto asegura que el fondo sea opaco e interactuable solo con el SweetAlert
+        allowOutsideClick: false,  // Impide clics fuera del SweetAlert
+        }).then((r) => {
+        if (r.isConfirmed) {
+            // El usuario hizo clic en "Reiniciar", llama a la función ReiniciarJuego
+            this.reiniciarJuego();
+        } else if (r.dismiss === Swal.DismissReason.cancel) {
+            // El usuario hizo clic en "Volver al Menú", llama a la función VolverAlMenu
+            this.volverAlHome();
+        }
+      });
     }
 
     if(this.puntos == 10)
     {
-      this.jugadorGano = true;
+      Swal.fire({
+        icon: 'success',
+        title: 'Ganaste',
+        showCancelButton: true,  // Habilita el botón de cancelar que usaremos para "Volver al Menú"
+        confirmButtonText: 'Reiniciar',
+        cancelButtonText: 'Volver al Menú',
+        reverseButtons: true,  // Coloca el botón de cancelar a la izquierda
+        backdrop: true,  // Esto asegura que el fondo sea opaco e interactuable solo con el SweetAlert
+        allowOutsideClick: false,  // Impide clics fuera del SweetAlert
+      }).then((r) => {
+          if (r.isConfirmed) {
+              // El usuario hizo clic en "Reiniciar", llama a la función ReiniciarJuego
+              this.reiniciarJuego();
+          } else if (r.dismiss === Swal.DismissReason.cancel) {
+              // El usuario hizo clic en "Volver al Menú", llama a la función VolverAlMenu
+              this.volverAlHome();
+          }
+      });
     }
 
   }

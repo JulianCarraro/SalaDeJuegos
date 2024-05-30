@@ -8,6 +8,8 @@ import { RegisterComponent } from './componentes/register/register.component';
 import { AhorcadoComponent } from './componentes/juegos/ahorcado/ahorcado.component';
 import { PreguntadosComponent } from './componentes/juegos/preguntados/preguntados.component';
 import { MayorOMenorComponent } from './componentes/juegos/mayor-o-menor/mayor-o-menor.component';
+import { EvitaLasEspinasComponent } from './componentes/juegos/evita-las-espinas/evita-las-espinas.component';
+import { ChatComponent } from './componentes/chat/chat.component';
 
 
 export const routes: Routes = [
@@ -20,6 +22,8 @@ export const routes: Routes = [
     { path: 'ahorcado', component: AhorcadoComponent},
     { path: 'preguntados', component: PreguntadosComponent},
     { path: 'mayoromenor', component: MayorOMenorComponent},
+    { path: 'evitalasespinas', component: EvitaLasEspinasComponent},
+    { path: 'chat', component: ChatComponent},
 
     // La ruta comodin debe ir siempre al final
     { path: '**', component: PageNotFoundComponent },

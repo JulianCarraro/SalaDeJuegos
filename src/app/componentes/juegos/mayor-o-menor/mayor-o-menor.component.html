@@ -26,28 +26,6 @@
                 Resultado: {{ respuesta }}
             </h2>
         </div>
-
-
-        <ng-template #botones>
-            <div class="botones2">
-                <button (click)="reiniciarJuego()">Reiniciar</button>
-                <button (click)="volverAlHome()">Menu</button>
-            </div>
-        </ng-template>
-
-        @if(this.jugadorGano) {
-        <div class="jugadorGano">
-            <h1 class="gano">GANASTE</h1>
-            <ng-container *ngTemplateOutlet="botones"></ng-container>
-        </div>
-        }
-
-        @if(this.jugadorPerdio) {
-            <div class="jugadorPerdio">
-                <h1 class="perdio">Perdiste</h1>
-                <ng-container *ngTemplateOutlet="botones"></ng-container>
-            </div>
-        }
     </div> 
     
 </div>

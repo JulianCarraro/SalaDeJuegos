@@ -1,0 +1,26 @@
+<div class = "contenido">
+    <!-- <h1 class = "titulo">Evita las espinas</h1> -->
+    <div class = "juego">
+        <div class = "espacioJuego">
+            <img src="../../../../assets/FondoMiJuego3.png" style="width: 500px; height: 700px;">
+
+            <div *ngFor="let triangleIndex of triangleGroups[currentGroupIndex]" class="triangle-right" [style.top.px]="triangles[triangleIndex].top"></div>
+            <div *ngFor="let triangleIndex of triangleGroups[currentGroupIndex]" class="triangle-left" [style.top.px]="triangles[triangleIndex].top"></div>
+
+            <div *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" class="triangle-down" [style.left.px]="i * 48 + 10"></div>
+            <div *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" class="triangle-up" [style.left.px]="i * 48 + 10"></div>
+
+            <div class="bird" [ngClass]="{'reverse': direction === 1}" [style.left.px]="birdPosition.left" [style.top.px]="birdPosition.top"></div>
+
+        </div>
+
+        <h1 class = "puntos">{{this.score}}</h1>
+
+        <button (click)="jump()">Jump</button>
+        <button (click)="reiniciarJuego()">Reiniciar</button>
+
+    </div>
+    
+    
+</div>
+
