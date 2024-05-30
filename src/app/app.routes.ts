@@ -1,32 +1,65 @@
 
 import { Routes } from '@angular/router';
-import { LoginComponent } from './componentes/login/login.component';
-import { HomeComponent } from './componentes/home/home.component';
-import { PageNotFoundComponent } from './componentes/page-not-found/page-not-found.component';
-import { QuiensoyComponent } from './componentes/quiensoy/quiensoy.component';
-import { RegisterComponent } from './componentes/register/register.component';
-import { AhorcadoComponent } from './componentes/juegos/ahorcado/ahorcado.component';
-import { PreguntadosComponent } from './componentes/juegos/preguntados/preguntados.component';
-import { MayorOMenorComponent } from './componentes/juegos/mayor-o-menor/mayor-o-menor.component';
-import { EvitaLasEspinasComponent } from './componentes/juegos/evita-las-espinas/evita-las-espinas.component';
-import { ChatComponent } from './componentes/chat/chat.component';
-
 
 export const routes: Routes = [
-    // Si le ponemos 'prefix' nos va a arrojar un error en la consola de redireccion infinita
-    { path: '', redirectTo: '/home', pathMatch: "full" },
-    { path: 'home', component: HomeComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'quiensoy', component: QuiensoyComponent},
-    { path: 'register', component: RegisterComponent},
-    { path: 'ahorcado', component: AhorcadoComponent},
-    { path: 'preguntados', component: PreguntadosComponent},
-    { path: 'mayoromenor', component: MayorOMenorComponent},
-    { path: 'evitalasespinas', component: EvitaLasEspinasComponent},
-    { path: 'chat', component: ChatComponent},
-
-    // La ruta comodin debe ir siempre al final
-    { path: '**', component: PageNotFoundComponent },
+    {
+        path: "login",
+        loadComponent: () => import('./componentes/login/login.component').then(
+            (l) => l.LoginComponent,
+        ),
+    },
+    {
+        path: "home",
+        loadComponent: () => import('./componentes/home/home.component').then(
+            (l) => l.HomeComponent,
+        ),
+    },
+    {
+        path: "quiensoy",
+        loadComponent: () => import('./componentes/quiensoy/quiensoy.component').then(
+            (l) => l.QuiensoyComponent,
+        ),
+    },
+    {
+        path: "register",
+        loadComponent: () => import('./componentes/register/register.component').then(
+            (l) => l.RegisterComponent,
+        ),
+    },
+    {
+        path: "ahorcado",
+        loadComponent: () => import('./componentes/juegos/ahorcado/ahorcado.component').then(
+            (l) => l.AhorcadoComponent,
+        ),
+    },
+    {
+        path: "mayoromenor",
+        loadComponent: () => import('./componentes/juegos/mayor-o-menor/mayor-o-menor.component').then(
+            (l) => l.MayorOMenorComponent,
+        ),
+    },
+    {
+        path: "preguntados",
+        loadComponent: () => import('./componentes/juegos/preguntados/preguntados.component').then(
+            (l) => l.PreguntadosComponent,
+        ),
+    },
+    {
+        path: "evitalasespinas",
+        loadComponent: () => import('./componentes/juegos/evita-las-espinas/evita-las-espinas.component').then(
+            (l) => l.EvitaLasEspinasComponent,
+        ),
+    },
+    {
+        path: " ",
+        redirectTo: "home",
+        pathMatch: "full",
+    },
+    {
+        path: "**",
+        redirectTo: "home",
+        pathMatch: "full",
+    },
     
 ];
 

@@ -49,7 +49,6 @@ export class PreguntadosComponent {
   iniciarContador() {
     this.intervalId = setInterval(() => {
       this.tiempoRestante -= 1;
-      console.log(this.tiempoRestante); // Opcional: Mostrar tiempo en consola
 
       if (this.tiempoRestante === 0) {
         clearInterval(this.intervalId); // Detener el intervalo
@@ -93,7 +92,6 @@ export class PreguntadosComponent {
     this.opcionDos = opcionesSeleccionadas[1]!.name;
     this.opcionTres = opcionesSeleccionadas[2]!.name;
     this.opcionCuatro = opcionesSeleccionadas[3]!.name;
-    console.log(this.personajeCorrecto?.name);
   }
 
   verificarTiempo() {
@@ -128,7 +126,6 @@ export class PreguntadosComponent {
     {
       this.score++;
       this.inicializarJuego();
-      console.log("Fue Correcta")
          
     }
     else{
@@ -154,7 +151,7 @@ export class PreguntadosComponent {
 
     }
 
-    if(this.score == 1)
+    if(this.score == 10)
     {
       this.detenerContador();
       Swal.fire({
