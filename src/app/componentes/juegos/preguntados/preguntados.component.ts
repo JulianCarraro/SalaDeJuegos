@@ -190,4 +190,9 @@ export class PreguntadosComponent {
     this.router.navigateByUrl('/home');
   }
 
+  ngOnDestroy()
+  {
+    this.detenerContador();
+  }
+
 }
